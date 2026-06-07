@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ひさし | AI活用研究家 ポートフォリオ</title>
 <meta name="description" content="FC本部のバックオフィスを、AIで少しずつラクにする。" />
+<!-- OGP (Open Graph) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ひさし | AI活用研究家 ポートフォリオ" />
+<meta property="og:description" content="店舗が増えるほど、社長の時間が削られる構造を、AIで変える。FC本部のバックオフィスを、AIで少しずつラクにする。" />
+<meta property="og:image" content="og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="ひさし | AI活用研究家" />
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@biz_kaizen" />
+<meta name="twitter:creator" content="@biz_kaizen" />
+<meta name="twitter:title" content="ひさし | AI活用研究家 ポートフォリオ" />
+<meta name="twitter:description" content="店舗が増えるほど、社長の時間が削られる構造を、AIで変える。" />
+<meta name="twitter:image" content="og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -29,6 +44,7 @@
     font-feature-settings: "palt";
     letter-spacing: 0.01em;
     line-height: 1.85;
+    word-break: auto-phrase;
   }
   .ink { color: var(--ink); }
   .ink-soft { color: var(--ink-soft); }
@@ -45,7 +61,8 @@
   .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
   /* 日本語のフレーズ単位改行: span をinline-blockにして、フレーズの途中で改行されないようにする */
   .jp p, .jp h1, .jp h2 { word-break: normal; overflow-wrap: normal; }
-  .ph { display: inline-block; }
+  .ph { display: inline; }
+  @media (min-width: 768px) { .ph { display: inline-block; } }
   input[type=range] { -webkit-appearance: none; appearance: none; background: transparent; }
   input[type=range]::-webkit-slider-runnable-track { height: 4px; background: var(--line); border-radius: 9999px; }
   input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); margin-top: -6px; cursor: pointer; }
@@ -373,127 +390,4 @@ function renderArea(key) {
           <p class="text-[10px] ink-soft mb-1">競合</p>
           <p class="text-lg font-bold ink">${d.competitors}<span class="text-xs ink-soft font-normal">店</span></p>
         </div>
-        <div class="p-3 rounded-xl bg-soft border border-line text-center">
-          <p class="text-[10px] ink-soft mb-1">人口</p>
-          <p class="text-lg font-bold ink">${d.population}</p>
-        </div>
-        <div class="p-3 rounded-xl bg-soft border border-line text-center">
-          <p class="text-[10px] ink-soft mb-1">小中高</p>
-          <p class="text-lg font-bold ink">${d.schools}<span class="text-xs ink-soft font-normal">校</span></p>
-        </div>
-      </div>
-      <p class="text-xs ink-soft mb-2">年齢層分布(%)</p>
-      <div class="space-y-1.5 mb-5">
-        ${d.ages.map(a => `
-          <div class="flex items-center gap-3 text-xs">
-            <span class="w-16 ink-soft">${a.label}</span>
-            <div class="flex-1 h-3 rounded-full bg-soft overflow-hidden">
-              <div class="h-3 bg-accent-soft" style="width:${(a.v/max)*100}%"></div>
-            </div>
-            <span class="w-8 text-right">${a.v}%</span>
-          </div>
-        `).join("")}
-      </div>
-      <div class="p-3 rounded-xl bg-soft border border-line text-xs ink">
-        <span class="accent font-bold">AIのひとこと　</span>${d.comment}
-      </div>
-    </div>
-  `;
-}
-
-/* ===== 作品02: 朝7時KPI配信 ===== */
-const KPI_MESSAGES = [
-  { type: "head", text: "おはようございます！今朝の本部レポートです。" },
-  { type: "section", title: "📊 前日売上(全店)", body: "¥1,284,500 (前週比 +8.2%)" },
-  { type: "section", title: "🎯 体験申込", body: "12件 (うち入会見込み 7件)" },
-  { type: "section", title: "⚠️ 退会兆候", body: "出席率70%以下の生徒 3名 → ダッシュボードで確認" },
-  { type: "tail", text: "今日も、いってらっしゃい。" }
-];
-
-function playKpi() {
-  const chat = document.getElementById("kpi-chat");
-  chat.innerHTML = "";
-  KPI_MESSAGES.forEach((m, i) => {
-    setTimeout(() => {
-      const el = document.createElement("div");
-      el.className = "chat-bubble bg-white border border-line rounded-2xl rounded-tl-sm p-3 text-sm";
-      if (m.type === "section") {
-        el.innerHTML = `<p class="text-[13px] font-bold mb-1">${m.title}</p><p class="text-xs ink-soft">${m.body}</p>`;
-      } else {
-        el.innerHTML = `<p class="text-xs">${m.text}</p>`;
-      }
-      chat.appendChild(el);
-      chat.scrollTop = chat.scrollHeight;
-    }, i * 700);
-  });
-}
-document.getElementById("kpi-replay").addEventListener("click", playKpi);
-
-/* ===== 作品03: 退会予測ダッシュボード ===== */
-const STUDENTS = [
-  { name: "Aさん", attend: [95,94,92,90,88,82,78,72,68,65,60,55], risk: 78, note: "出席率が3週連続で低下" },
-  { name: "Bさん", attend: [88,90,89,86,85,84,83,82,82,80,78,76], risk: 52, note: "微減傾向。連絡頻度も下がりぎみ" },
-  { name: "Cさん", attend: [70,72,68,66,64,60,58,55,52,50,48,45], risk: 91, note: "出席率50%割れ。月謝遅延あり" },
-  { name: "Dさん", attend: [100,98,99,97,98,96,95,94,93,92,91,90], risk: 18, note: "安定。継続見込み" },
-  { name: "Eさん", attend: [82,80,78,76,75,73,70,68,66,64,62,60], risk: 64, note: "ゆるやかな低下が続いてます" },
-  { name: "Fさん", attend: [95,96,94,95,93,94,92,90,88,86,82,78], risk: 47, note: "直近3週で減速。要観察" }
-];
-
-const ctx = document.getElementById("retention-chart").getContext("2d");
-const chart = new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: ["-12w","-11w","-10w","-9w","-8w","-7w","-6w","-5w","-4w","-3w","-2w","-1w"],
-    datasets: STUDENTS.slice(0,4).map((s, i) => ({
-      label: s.name,
-      data: s.attend,
-      borderColor: ["#c4724f","#6a8f5d","#c25b4a","#6b5d4d"][i],
-      backgroundColor: "transparent",
-      tension: 0.35,
-      borderWidth: 2,
-      pointRadius: 0
-    }))
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { labels: { font: { size: 10 }, boxWidth: 10 } }
-    },
-    scales: {
-      y: { min: 30, max: 100, ticks: { font: { size: 10 } } },
-      x: { ticks: { font: { size: 10 } } }
-    }
-  }
-});
-
-const slider = document.getElementById("threshold");
-const tval = document.getElementById("threshold-val");
-const list = document.getElementById("risk-list");
-
-function renderRisk() {
-  const th = +slider.value;
-  tval.textContent = th;
-  const filtered = STUDENTS.filter(s => s.risk >= th).sort((a,b)=>b.risk-a.risk);
-  if (filtered.length === 0) {
-    list.innerHTML = `<p class="text-xs ink-soft">該当する生徒はいません。</p>`;
-    return;
-  }
-  list.innerHTML = filtered.map(s => {
-    const color = s.risk >= 75 ? "var(--danger)" : s.risk >= 50 ? "var(--warn)" : "var(--ok)";
-    return `
-      <div class="p-2.5 rounded-xl bg-soft border border-line flex items-center gap-3">
-        <span class="w-10 text-center font-bold" style="color:${color}">${s.risk}</span>
-        <div class="flex-1">
-          <p class="text-sm">${s.name}</p>
-          <p class="text-[11px] ink-soft">${s.note}</p>
-        </div>
-      </div>
-    `;
-  }).join("");
-}
-slider.addEventListener("input", renderRisk);
-renderRisk();
-</script>
-</body>
-</html>
+        <div class="p-3 round
