@@ -385,9 +385,147 @@ function renderArea(key) {
   const result = document.getElementById("area-result");
   result.innerHTML = `
     <div class="fade-in">
+      <p class="text-sm ink mb-4"><span class="accent font-bold">${d.name}</span> の商圏データ</p>
       <div class="grid grid-cols-3 gap-3 mb-5">
         <div class="p-3 rounded-xl bg-soft border border-line text-center">
           <p class="text-[10px] ink-soft mb-1">競合</p>
           <p class="text-lg font-bold ink">${d.competitors}<span class="text-xs ink-soft font-normal">店</span></p>
         </div>
-        <div class="p-3 round
+        <div class="p-3 rounded-xl bg-soft border border-line text-center">
+          <p class="text-[10px] ink-soft mb-1">人口</p>
+          <p class="text-lg font-bold ink">${d.population}</p>
+        </div>
+        <div class="p-3 rounded-xl bg-soft border border-line text-center">
+          <p class="text-[10px] ink-soft mb-1">学校数</p>
+          <p class="text-lg font-bold ink">${d.schools}<span class="text-xs ink-soft font-normal">校</span></p>
+        </div>
+      </div>
+      <p class="text-[10px] ink-soft mb-2">年齢層の構成比</p>
+      <div class="space-y-1.5 mb-5">
+        ${d.ages.map(a => `
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] ink-soft w-14 shrink-0">${a.label}</span>
+            <div class="flex-1 h-3 rounded-full bg-soft overflow-hidden">
+              <div class="h-full bg-accent rounded-full" style="width:${Math.round(a.v / max * 100)}%"></div>
+            </div>
+            <span class="text-[10px] ink-soft w-8 text-right">${a.v}%</span>
+          </div>`).join("")}
+      </div>
+      <div class="p-3 rounded-xl bg-soft border border-line">
+        <p class="text-[10px] tracking-widest ink-soft mb-1">AIのひとこと</p>
+        <p class="text-sm ink">${d.comment}</p>
+      </div>
+    </div>`;
+}
+
+/* ===== 作品02: 朝7時KPI自動配信 ===== */
+const KPI_MESSAGES = [
+  { t: "おはようございます☀️ 昨日(6/6)の本部KPIをお届けします。" },
+  { t: "💰 昨日の総売上：<b>¥1,284,000</b>（前日比 +6.2%）" },
+  { t: "📝 体験申込：<b>14件</b>（過去7日平均 11件）" },
+  { t: "👥 在籍：<b>1,062名</b>／新規入会 +5・退会 -2" },
+  { t: "⚠️ 退会兆候スコアが上がった生徒が <b>3名</b>。退会予測ダッシュボードを確認してください。" },
+  { t: "今日もいってらっしゃい🙌" }
+];
+
+function renderKpiChat() {
+  const box = document.getElementById("kpi-chat");
+  if (!box) return;
+  box.innerHTML = "";
+  KPI_MESSAGES.forEach((m, i) => {
+    setTimeout(() => {
+      const el = document.createElement("div");
+      el.className = "chat-bubble bg-white border border-line rounded-2xl rounded-tl-sm px-3 py-2 text-sm ink";
+      el.innerHTML = m.t;
+      box.appendChild(el);
+      box.scrollTop = box.scrollHeight;
+    }, i * 650);
+  });
+}
+
+const kpiReplay = document.getElementById("kpi-replay");
+if (kpiReplay) kpiReplay.addEventListener("click", renderKpiChat);
+
+/* ===== 作品03: 退会予測ダッシュボード ===== */
+const STUDENTS = [
+  { name: "A.S さん", risk: 82, note: "直近4週で欠席増・月謝1回遅延" },
+  { name: "K.T さん", risk: 67, note: "連絡頻度が低下、出席率 58%" },
+  { name: "M.Y さん", risk: 54, note: "出席はするが体験以来の進級なし" },
+  { name: "R.N さん", risk: 38, note: "やや出席ムラあり" },
+  { name: "H.K さん", risk: 21, note: "安定して通えています" },
+  { name: "Y.I さん", risk: 12, note: "出席率 96%・問題なし" }
+];
+
+function riskColor(r) {
+  if (r >= 70) return "var(--danger)";
+  if (r >= 45) return "var(--warn)";
+  return "var(--ok)";
+}
+
+function renderRiskList() {
+  const list = document.getElementById("risk-list");
+  const th = +document.getElementById("threshold").value;
+  if (!list) return;
+  const hit = STUDENTS.filter(s => s.risk >= th).sort((a, b) => b.risk - a.risk);
+  if (!hit.length) {
+    list.innerHTML = `<p class="text-xs ink-soft">この閾値を超える生徒はいません。</p>`;
+    return;
+  }
+  list.innerHTML = hit.map(s => `
+    <div class="p-3 rounded-xl bg-soft border border-line">
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-sm ink">${s.name}</span>
+        <span class="text-xs font-bold" style="color:${riskColor(s.risk)}">リスク ${s.risk}</span>
+      </div>
+      <div class="h-2 rounded-full bg-white overflow-hidden mb-1">
+        <div class="h-full rounded-full" style="width:${s.risk}%;background:${riskColor(s.risk)}"></div>
+      </div>
+      <p class="text-[11px] ink-soft">${s.note}</p>
+    </div>`).join("");
+}
+
+const thresholdEl = document.getElementById("threshold");
+if (thresholdEl) {
+  thresholdEl.addEventListener("input", () => {
+    document.getElementById("threshold-val").textContent = thresholdEl.value;
+    renderRiskList();
+  });
+}
+
+window.addEventListener("load", () => {
+  // 退会予測チャート
+  const canvas = document.getElementById("retention-chart");
+  if (canvas && window.Chart) {
+    const weeks = Array.from({ length: 12 }, (_, i) => `${i + 1}w`);
+    new Chart(canvas, {
+      type: "line",
+      data: {
+        labels: weeks,
+        datasets: [{
+          label: "出席率(%)",
+          data: [94, 93, 95, 92, 90, 91, 88, 85, 83, 80, 77, 74],
+          borderColor: "#c4724f",
+          backgroundColor: "rgba(196,114,79,0.12)",
+          fill: true,
+          tension: 0.35,
+          pointRadius: 2,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { min: 60, max: 100, ticks: { font: { size: 10 } }, grid: { color: "#e3d8c5" } },
+          x: { ticks: { font: { size: 10 } }, grid: { display: false } }
+        }
+      }
+    });
+  }
+  renderRiskList();
+  renderKpiChat();
+});
+</script>
+</body>
+</html>
