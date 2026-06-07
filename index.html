@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ひさし | AI活用研究家 ポートフォリオ</title>
+<meta name="description" content="FC本部のバックオフィスを、AIで少しずつラクにする。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #faf6f1;
+    --bg-soft: #f3ecdf;
+    --ink: #2b241c;
+    --ink-soft: #6b5d4d;
+    --accent: #c4724f;
+    --accent-soft: #e9b894;
+    --line: #e3d8c5;
+    --ok: #6a8f5d;
+    --warn: #c98a3a;
+    --danger: #c25b4a;
+  }
+  html, body { background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "palt";
+    letter-spacing: 0.01em;
+    line-height: 1.85;
+  }
+  .ink { color: var(--ink); }
+  .ink-soft { color: var(--ink-soft); }
+  .bg-soft { background: var(--bg-soft); }
+  .border-line { border-color: var(--line); }
+  .accent { color: var(--accent); }
+  .bg-accent { background: var(--accent); }
+  .bg-accent-soft { background: var(--accent-soft); }
+  .ring-accent { box-shadow: 0 0 0 2px var(--accent); }
+  .fade-in { animation: fade 0.45s ease both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .chat-bubble { animation: pop 0.35s ease both; }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
+  .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  /* 日本語のフレーズ単位改行: span をinline-blockにして、フレーズの途中で改行されないようにする */
+  .jp p, .jp h1, .jp h2 { word-break: normal; overflow-wrap: normal; }
+  .ph { display: inline-block; }
+  input[type=range] { -webkit-appearance: none; appearance: none; background: transparent; }
+  input[type=range]::-webkit-slider-runnable-track { height: 4px; background: var(--line); border-radius: 9999px; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); margin-top: -6px; cursor: pointer; }
+  input[type=range]::-moz-range-track { height: 4px; background: var(--line); border-radius: 9999px; }
+  input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 0; cursor: pointer; }
+</style>
+</head>
+<body class="leading-relaxed">
+
+<!-- HERO -->
+<header class="px-6 md:px-10 pt-14 md:pt-24 pb-16 md:pb-24">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-2 text-sm ink-soft mb-6">
+      <span class="dot bg-accent"></span>
+      <span>ひさし｜AI活用研究家 / @biz_kaizen</span>
+    </div>
+    <h1 class="text-3xl md:text-5xl font-bold leading-snug md:leading-tight mb-6">
+      店舗が増えるほど、<br />
+      社長の時間は、削られていく。<br />
+      <span class="accent">その構造をAIで、ちょっとずつ変えてます。</span>
+    </h1>
+    <p class="text-base md:text-lg ink-soft max-w-2xl mb-10 jp">
+      <span class="ph">月次集計とか、</span><span class="ph">加盟店からのレポート集めとか、</span><span class="ph">ロイヤリティの計算とか。</span>
+      <span class="ph">FC本部の細かい作業を、</span><span class="ph">AIにちょっとずつ任せて、</span><span class="ph">社長の時間を取り戻すお手伝いをしています。</span>
+    </p>
+    <div class="flex flex-wrap gap-3">
+      <a href="#works" class="px-5 py-3 rounded-full bg-accent text-white text-sm md:text-base hover:opacity-90 transition">作品を見る</a>
+      <a href="https://x.com/biz_kaizen" target="_blank" rel="noopener" class="px-5 py-3 rounded-full border border-line ink hover:bg-soft transition text-sm md:text-base">Xで相談する →</a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="px-6 md:px-10 py-16 bg-soft border-y border-line">
+  <div class="max-w-3xl mx-auto">
+    <p class="text-xs tracking-widest ink-soft mb-3">こんな人です</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">はじめまして、ひさしです。</h2>
+    <p class="ink-soft mb-4 jp">
+      <span class="ph">会社員として働きながら、</span><span class="ph">AIで業務を自動化するのが趣味になりました。</span>
+      <span class="ph">面倒な作業をAIに任せてみたら、</span><span class="ph">思いのほかラクになって、</span><span class="ph">気づいたら業務改善が好きになっていた、</span><span class="ph">というタイプです。</span>
+    </p>
+    <p class="ink-soft jp">
+      <span class="ph">ここに並ぶ作品はぜんぶ、</span><span class="ph">「FC本部の社長の時間を取り戻す」</span><span class="ph">というところから逆算して作っています。</span>
+      <span class="ph">作って終わり、ではなく、</span><span class="ph">現場でちゃんと使われ続けるところまで考えるのが、</span><span class="ph">わたしの好きなやり方です。</span>
+    </p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="px-6 md:px-10 py-20">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-xs tracking-widest ink-soft mb-3">こんな課題、ありませんか</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-10">FC本部にありがちな、3つの時間泥棒</h2>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="p-6 rounded-2xl bg-soft border border-line">
+        <p class="text-lg font-bold mb-2">月次集計</p>
+        <p class="text-sm ink-soft jp"><span class="ph">加盟店ごとの売上を集めて、</span><span class="ph">月初に深夜まで突き合わせる。</span><span class="ph">気づいたら今月もこの作業。</span></p>
+      </div>
+      <div class="p-6 rounded-2xl bg-soft border border-line">
+        <p class="text-lg font-bold mb-2">加盟店レポート</p>
+        <p class="text-sm ink-soft jp"><span class="ph">店舗の状況がリアルタイムで見えない。</span><span class="ph">相談が来てから</span><span class="ph">「あ、そうだったんだ」と気づく。</span></p>
+      </div>
+      <div class="p-6 rounded-2xl bg-soft border border-line">
+        <p class="text-lg font-bold mb-2">ロイヤリティ計算</p>
+        <p class="text-sm ink-soft jp"><span class="ph">毎月の計算と通知。</span><span class="ph">社長自身がやってる本部も、</span><span class="ph">まだまだ多いはずです。</span></p>
+      </div>
+    </div>
+    <p class="text-lg md:text-xl mt-10 ink font-bold jp">
+      <span class="ph">店舗が増えるほど、</span><span class="ph">社長の時間が削られていく。</span><br />
+      <span class="ph">この構造、</span><span class="ph">AIで変えられます。</span>
+    </p>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works" class="px-6 md:px-10 py-20 bg-soft border-y border-line">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-xs tracking-widest ink-soft mb-3">作ったもの</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-3">作品</h2>
+    <p class="ink-soft mb-12 jp"><span class="ph">どんな課題を、</span><span class="ph">どう解いて、</span><span class="ph">何が変わるか。</span><span class="ph">実際に動くデモも触ってみてください。</span><br/><span class="ph">※デモはダミーデータで動きます。</span></p>
+
+    <!-- 作品01: 商圏調査 -->
+    <article class="mb-20">
+      <div class="flex items-baseline gap-3 mb-2">
+        <span class="text-sm accent font-bold">01</span>
+        <h3 class="text-xl md:text-2xl font-bold">AI商圏調査ツール</h3>
+      </div>
+      <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">出店検討や、</span><span class="ph">エリア戦略のための下調べを、</span><span class="ph">AIに任せる。</span></p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="p-5 rounded-2xl bg-white border border-line">
+          <p class="text-xs tracking-widest ink-soft mb-2">こんな課題が</p>
+          <p class="text-sm jp"><span class="ph">出店検討のたびに、</span><span class="ph">担当者が手作業で</span><span class="ph">3日くらいかけて</span><span class="ph">商圏調査をしている。</span></p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-line">
+          <p class="text-xs tracking-widest ink-soft mb-2">こう解きました</p>
+          <p class="text-sm jp"><span class="ph">エリアを選ぶだけで、</span><span class="ph">AIが競合・人口・学校数・年齢層を</span><span class="ph">ぱぱっと集計。</span><span class="ph">担当者は</span><span class="ph">「で、どうする?」</span><span class="ph">の判断に集中できます。</span></p>
+        </div>
+      </div>
+
+      <!-- DEMO -->
+      <div class="p-5 md:p-7 rounded-2xl bg-white border border-line">
+        <div class="flex items-center justify-between mb-5">
+          <p class="text-xs tracking-widest ink-soft">触れるデモ</p>
+          <span class="text-[10px] ink-soft border border-line rounded-full px-2 py-0.5">ダミーデータ</span>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-5" id="area-buttons">
+          <button data-area="tokyo" class="area-btn px-4 py-2 text-sm rounded-full border border-line hover:bg-soft">東京都・世田谷区</button>
+          <button data-area="yokohama" class="area-btn px-4 py-2 text-sm rounded-full border border-line hover:bg-soft">横浜市・港北区</button>
+          <button data-area="osaka" class="area-btn px-4 py-2 text-sm rounded-full border border-line hover:bg-soft">大阪市・北区</button>
+          <button data-area="fukuoka" class="area-btn px-4 py-2 text-sm rounded-full border border-line hover:bg-soft">福岡市・早良区</button>
+        </div>
+        <div id="area-result" class="text-sm ink-soft">エリアを選ぶと、AIが集めた商圏データが出てきます。</div>
+      </div>
+
+      <p class="mt-6 text-sm ink-soft jp"><span class="accent font-bold">こうなりました　</span><span class="ph">3日 → 数時間。</span><span class="ph">担当者はAIが集めた数字を見て、</span><span class="ph">判断する時間に変わります。</span></p>
+    </article>
+
+    <!-- 作品02: 朝7時KPI配信 -->
+    <article class="mb-20">
+      <div class="flex items-baseline gap-3 mb-2">
+        <span class="text-sm accent font-bold">02</span>
+        <h3 class="text-xl md:text-2xl font-bold">朝7時KPI自動配信</h3>
+      </div>
+      <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">前日の数字を、</span><span class="ph">社長が毎朝かならず</span><span class="ph">目にする仕組みにする。</span></p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="p-5 rounded-2xl bg-white border border-line">
+          <p class="text-xs tracking-widest ink-soft mb-2">こんな課題が</p>
+          <p class="text-sm jp"><span class="ph">前日の売上や体験申込が、</span><span class="ph">社長の手元に届いてない。</span><span class="ph">ダッシュボード作っても、</span><span class="ph">結局見に行かない。</span></p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-line">
+          <p class="text-xs tracking-widest ink-soft mb-2">こう解きました</p>
+          <p class="text-sm jp"><span class="ph">毎朝7時、</span><span class="ph">SlackやLINEに前日数字を自動で投稿。</span><span class="ph">「見に行く」じゃなくて</span><span class="ph">「届く」にすると、</span><span class="ph">習慣になります。</span></p>
+        </div>
+      </div>
+
+      <!-- DEMO -->
+      <div class="p-5 md:p-7 rounded-2xl bg-white border border-line">
+        <div class="flex items-center justify-between mb-5">
+          <p class="text-xs tracking-widest ink-soft">触れるデモ</p>
+          <button id="kpi-replay" class="text-xs px-3 py-1 rounded-full bg-accent text-white hover:opacity-90">▶ 再生する</button>
+        </div>
+        <div class="max-w-sm mx-auto rounded-3xl border border-line bg-soft p-4">
+          <div class="flex items-center gap-2 mb-3 pb-3 border-b border-line">
+            <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white text-xs">朝</div>
+            <div>
+              <p class="text-sm">本部KPI BOT</p>
+              <p class="text-[10px] ink-soft">朝 7:00</p>
+            </div>
+          </div>
+          <div id="kpi-chat" class="space-y-3 min-h-[260px]"></div>
+        </div>
+      </div>
+
+      <p class="mt-6 text-sm ink-soft jp"><span class="accent font-bold">こうなりました　</span><span class="ph">数字を見るのが日課になる。</span><span class="ph">退会兆候や売上の異変に、</span><span class="ph">ちょっと早く気づけます。</span></p>
+    </article>
+
+    <!-- 作品03: 退会予測 -->
+    <article>
+      <div class="flex items-baseline gap-3 mb-2">
+        <span class="text-sm accent font-bold">03</span>
+        <h3 class="text-xl md:text-2xl font-bold">退会予測ダッシュボード</h3>
+      </div>
+      <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">「最近来てないな」を、</span><span class="ph">もっと早く気づけるように。</span></p>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-8">
+        <div class="p-5 rounded-2xl bg-white border border-line">
+          <p class="text-xs tracking-widest ink-soft mb-2">こんな課題が</p>
+          <p class="text-sm jp"><span class="ph">「最近来てないな」</span><span class="ph">と気づいたときには、</span><span class="ph">もう退会の意思が固まっている。</span><span class="ph">手の打ちようがない。</span></p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-line">
+          <p class="text-xs tracking-widest ink-soft mb-2">こう解きました</p>
+          <p class="text-sm jp"><span class="ph">出席率・連絡頻度・月謝遅延から、</span><span class="ph">退会リスクをスコアに。</span><span class="ph">閾値を超えた生徒だけ</span><span class="ph">一覧で見えるようにします。</span></p>
+        </div>
+      </div>
+
+      <!-- DEMO -->
+      <div class="p-5 md:p-7 rounded-2xl bg-white border border-line">
+        <div class="flex items-center justify-between mb-5">
+          <p class="text-xs tracking-widest ink-soft">触れるデモ</p>
+          <span class="text-[10px] ink-soft border border-line rounded-full px-2 py-0.5">ダミーデータ</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <p class="text-xs ink-soft mb-2">出席率の推移(過去12週)</p>
+            <div class="h-48"><canvas id="retention-chart"></canvas></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-xs ink-soft">退会リスク閾値</p>
+              <p class="text-xs"><span id="threshold-val">50</span> 以上を表示</p>
+            </div>
+            <input id="threshold" type="range" min="0" max="100" value="50" class="w-full mb-4" />
+            <div id="risk-list" class="space-y-2 text-sm"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-6 text-sm ink-soft jp"><span class="accent font-bold">こうなりました　</span><span class="ph">退会の予兆に1〜2週間早く気づける。</span><span class="ph">本部と教室で、</span><span class="ph">先に声をかけられます。</span></p>
+    </article>
+  </div>
+</section>
+
+<!-- OTHER WORKS -->
+<section class="px-6 md:px-10 py-20">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-xs tracking-widest ink-soft mb-3">他にもこういうの作れます</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-10">こんなのも、ぜんぶAIで</h2>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div class="p-6 rounded-2xl bg-soft border border-line">
+        <p class="text-lg font-bold mb-2">保護者対応AIアシスタント</p>
+        <p class="text-sm ink-soft jp"><span class="ph">過去のやりとりを学習して、</span><span class="ph">返信3案をAIが用意。</span><span class="ph">代表は「これでOK」を押すだけ。</span></p>
+      </div>
+      <div class="p-6 rounded-2xl bg-soft border border-line">
+        <p class="text-lg font-bold mb-2">オーナーオンボーディング自動化</p>
+        <p class="text-sm ink-soft jp"><span class="ph">開業前12週の進捗チェック、</span><span class="ph">Zoom議事録AI要約、</span><span class="ph">未完了タスクのリマインド。</span></p>
+      </div>
+      <div class="p-6 rounded-2xl bg-soft border border-line">
+        <p class="text-lg font-bold mb-2">SEO内製化監査テンプレート</p>
+        <p class="text-sm ink-soft jp"><span class="ph">内部リンク、記事の鮮度、</span><span class="ph">エリアページ、監修者情報を、</span><span class="ph">AIが自動で点検。</span></p>
+      </div>
+      <div class="p-6 rounded-2xl bg-soft border border-line">
+        <p class="text-lg font-bold mb-2">FC加盟提案書 自動ドラフト</p>
+        <p class="text-sm ink-soft jp"><span class="ph">検討者の属性から、</span><span class="ph">投資回収シミュレーション付きの提案書を、</span><span class="ph">AIが下書きします。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="px-6 md:px-10 py-20 bg-soft border-y border-line">
+  <div class="max-w-3xl mx-auto">
+    <p class="text-xs tracking-widest ink-soft mb-3">考え方</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-10">大事にしてること</h2>
+    <ol class="space-y-6">
+      <li>
+        <p class="text-lg font-bold mb-1">作って終わり、にしない。</p>
+        <p class="text-sm ink-soft jp"><span class="ph">道具は、</span><span class="ph">使われ続けてはじめて意味がある。</span><span class="ph">導入したあとの運用や習慣化まで、</span><span class="ph">ちゃんと考えます。</span></p>
+      </li>
+      <li>
+        <p class="text-lg font-bold mb-1">「社長の時間が戻るか?」だけを物差しにする。</p>
+        <p class="text-sm ink-soft jp"><span class="ph">何を作るか、どう作るか、</span><span class="ph">迷ったときの判断基準はひとつだけ。</span><span class="ph">「本部の社長の時間が、</span><span class="ph">ちょっとでも戻ったか?」</span><span class="ph">それだけを見ます。</span></p>
+      </li>
+      <li>
+        <p class="text-lg font-bold mb-1">明日試せるサイズで話す。</p>
+        <p class="text-sm ink-soft jp"><span class="ph">「生産性10倍」みたいな大きな話より、</span><span class="ph">今日見直せるくらい小さな改善を、</span><span class="ph">ひとつずつ。</span></p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="px-6 md:px-10 py-20">
+  <div class="max-w-3xl mx-auto">
+    <p class="text-xs tracking-widest ink-soft mb-3">プロフィール</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-8">ひさし｜AI活用研究家</h2>
+    <dl class="grid grid-cols-[6rem_1fr] md:grid-cols-[8rem_1fr] gap-y-3 text-sm md:text-base">
+      <dt class="ink-soft">仕事</dt><dd>会社員 × AIで業務自動化</dd>
+      <dt class="ink-soft">発信</dt><dd><a class="accent underline underline-offset-4" href="https://x.com/biz_kaizen" target="_blank" rel="noopener">@biz_kaizen</a></dd>
+      <dt class="ink-soft">テーマ</dt><dd>FC本部のバックオフィスを、AIで小さくラクに</dd>
+      <dt class="ink-soft">拠点</dt><dd>大阪</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-6 md:px-10 py-20 bg-soft border-t border-line">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">「これ面倒...」のひと言から、どうぞ。</h2>
+    <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">FC本部・多店舗経営の方からの相談、</span><span class="ph">XのDMで受けつけてます。</span><br/><span class="ph">気軽な入口で全然OKです。</span></p>
+    <a href="https://x.com/biz_kaizen" target="_blank" rel="noopener" class="inline-block px-6 py-3 rounded-full bg-accent text-white hover:opacity-90 transition">XのDMで相談する →</a>
+  </div>
+</section>
+
+<footer class="px-6 md:px-10 py-10 text-center text-xs ink-soft">
+  © ひさし｜AI活用研究家 — Portfolio
+</footer>
+
+<script>
+/* ===== 作品01: 商圏調査 ===== */
+const AREA_DATA = {
+  tokyo: {
+    name: "東京都 世田谷区",
+    competitors: 18, population: "約 92.5万人", schools: 89,
+    ages: [{label:"未就学",v:9},{label:"小学生",v:13},{label:"中高生",v:10},{label:"20-30代",v:30},{label:"40-50代",v:25},{label:"60代-",v:13}],
+    comment: "競合は多めですが、ファミリー層の絶対数が圧倒的。差別化できれば十分な需要があります。"
+  },
+  osaka: {
+    name: "大阪市 北区",
+    competitors: 12, population: "約 13.8万人", schools: 9,
+    ages: [{label:"未就学",v:8},{label:"小学生",v:14},{label:"中高生",v:11},{label:"20-30代",v:34},{label:"40-50代",v:22},{label:"60代-",v:11}],
+    comment: "競合密度はちょっと高め。子育て層が多い駅東側にまだ空きがありそう。"
+  },
+  yokohama: {
+    name: "横浜市 港北区",
+    competitors: 7, population: "約 36.0万人", schools: 26,
+    ages: [{label:"未就学",v:12},{label:"小学生",v:18},{label:"中高生",v:13},{label:"20-30代",v:24},{label:"40-50代",v:21},{label:"60代-",v:12}],
+    comment: "ファミリー層が多くて学校数も多い。出店の余地、けっこうあります。"
+  },
+  fukuoka: {
+    name: "福岡市 早良区",
+    competitors: 5, population: "約 22.0万人", schools: 18,
+    ages: [{label:"未就学",v:10},{label:"小学生",v:16},{label:"中高生",v:12},{label:"20-30代",v:28},{label:"40-50代",v:20},{label:"60代-",v:14}],
+    comment: "競合が少なめ。住宅街向けの集客やSNSと相性よさそうです。"
+  }
+};
+
+document.querySelectorAll(".area-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".area-btn").forEach(b => b.classList.remove("ring-accent","bg-soft"));
+    btn.classList.add("ring-accent","bg-soft");
+    renderArea(btn.dataset.area);
+  });
+});
+
+function renderArea(key) {
+  const d = AREA_DATA[key];
+  const max = Math.max(...d.ages.map(a => a.v));
+  const result = document.getElementById("area-result");
+  result.innerHTML = `
+    <div class="fade-in">
+      <div class="grid grid-cols-3 gap-3 mb-5">
+        <div class="p-3 rounded-xl bg-soft border border-line text-center">
+          <p class="text-[10px] ink-soft mb-1">競合</p>
+          <p class="text-lg font-bold ink">${d.competitors}<span class="text-xs ink-soft font-normal">店</span></p>
+        </div>
+        <div class="p-3 rounded-xl bg-soft border border-line text-center">
+          <p class="text-[10px] ink-soft mb-1">人口</p>
+          <p class="text-lg font-bold ink">${d.population}</p>
+        </div>
+        <div class="p-3 rounded-xl bg-soft border border-line text-center">
+          <p class="text-[10px] ink-soft mb-1">小中高</p>
+          <p class="text-lg font-bold ink">${d.schools}<span class="text-xs ink-soft font-normal">校</span></p>
+        </div>
+      </div>
+      <p class="text-xs ink-soft mb-2">年齢層分布(%)</p>
+      <div class="space-y-1.5 mb-5">
+        ${d.ages.map(a => `
+          <div class="flex items-center gap-3 text-xs">
+            <span class="w-16 ink-soft">${a.label}</span>
+            <div class="flex-1 h-3 rounded-full bg-soft overflow-hidden">
+              <div class="h-3 bg-accent-soft" style="width:${(a.v/max)*100}%"></div>
+            </div>
+            <span class="w-8 text-right">${a.v}%</span>
+          </div>
+        `).join("")}
+      </div>
+      <div class="p-3 rounded-xl bg-soft border border-line text-xs ink">
+        <span class="accent font-bold">AIのひとこと　</span>${d.comment}
+      </div>
+    </div>
+  `;
+}
+
+/* ===== 作品02: 朝7時KPI配信 ===== */
+const KPI_MESSAGES = [
+  { type: "head", text: "おはようございます！今朝の本部レポートです。" },
+  { type: "section", title: "📊 前日売上(全店)", body: "¥1,284,500 (前週比 +8.2%)" },
+  { type: "section", title: "🎯 体験申込", body: "12件 (うち入会見込み 7件)" },
+  { type: "section", title: "⚠️ 退会兆候", body: "出席率70%以下の生徒 3名 → ダッシュボードで確認" },
+  { type: "tail", text: "今日も、いってらっしゃい。" }
+];
+
+function playKpi() {
+  const chat = document.getElementById("kpi-chat");
+  chat.innerHTML = "";
+  KPI_MESSAGES.forEach((m, i) => {
+    setTimeout(() => {
+      const el = document.createElement("div");
+      el.className = "chat-bubble bg-white border border-line rounded-2xl rounded-tl-sm p-3 text-sm";
+      if (m.type === "section") {
+        el.innerHTML = `<p class="text-[13px] font-bold mb-1">${m.title}</p><p class="text-xs ink-soft">${m.body}</p>`;
+      } else {
+        el.innerHTML = `<p class="text-xs">${m.text}</p>`;
+      }
+      chat.appendChild(el);
+      chat.scrollTop = chat.scrollHeight;
+    }, i * 700);
+  });
+}
+document.getElementById("kpi-replay").addEventListener("click", playKpi);
+
+/* ===== 作品03: 退会予測ダッシュボード ===== */
+const STUDENTS = [
+  { name: "Aさん", attend: [95,94,92,90,88,82,78,72,68,65,60,55], risk: 78, note: "出席率が3週連続で低下" },
+  { name: "Bさん", attend: [88,90,89,86,85,84,83,82,82,80,78,76], risk: 52, note: "微減傾向。連絡頻度も下がりぎみ" },
+  { name: "Cさん", attend: [70,72,68,66,64,60,58,55,52,50,48,45], risk: 91, note: "出席率50%割れ。月謝遅延あり" },
+  { name: "Dさん", attend: [100,98,99,97,98,96,95,94,93,92,91,90], risk: 18, note: "安定。継続見込み" },
+  { name: "Eさん", attend: [82,80,78,76,75,73,70,68,66,64,62,60], risk: 64, note: "ゆるやかな低下が続いてます" },
+  { name: "Fさん", attend: [95,96,94,95,93,94,92,90,88,86,82,78], risk: 47, note: "直近3週で減速。要観察" }
+];
+
+const ctx = document.getElementById("retention-chart").getContext("2d");
+const chart = new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: ["-12w","-11w","-10w","-9w","-8w","-7w","-6w","-5w","-4w","-3w","-2w","-1w"],
+    datasets: STUDENTS.slice(0,4).map((s, i) => ({
+      label: s.name,
+      data: s.attend,
+      borderColor: ["#c4724f","#6a8f5d","#c25b4a","#6b5d4d"][i],
+      backgroundColor: "transparent",
+      tension: 0.35,
+      borderWidth: 2,
+      pointRadius: 0
+    }))
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { font: { size: 10 }, boxWidth: 10 } }
+    },
+    scales: {
+      y: { min: 30, max: 100, ticks: { font: { size: 10 } } },
+      x: { ticks: { font: { size: 10 } } }
+    }
+  }
+});
+
+const slider = document.getElementById("threshold");
+const tval = document.getElementById("threshold-val");
+const list = document.getElementById("risk-list");
+
+function renderRisk() {
+  const th = +slider.value;
+  tval.textContent = th;
+  const filtered = STUDENTS.filter(s => s.risk >= th).sort((a,b)=>b.risk-a.risk);
+  if (filtered.length === 0) {
+    list.innerHTML = `<p class="text-xs ink-soft">該当する生徒はいません。</p>`;
+    return;
+  }
+  list.innerHTML = filtered.map(s => {
+    const color = s.risk >= 75 ? "var(--danger)" : s.risk >= 50 ? "var(--warn)" : "var(--ok)";
+    return `
+      <div class="p-2.5 rounded-xl bg-soft border border-line flex items-center gap-3">
+        <span class="w-10 text-center font-bold" style="color:${color}">${s.risk}</span>
+        <div class="flex-1">
+          <p class="text-sm">${s.name}</p>
+          <p class="text-[11px] ink-soft">${s.note}</p>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+slider.addEventListener("input", renderRisk);
+renderRisk();
+</script>
+</body>
+</html>
