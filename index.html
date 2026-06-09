@@ -4,11 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ひさし | AI活用研究家 ポートフォリオ</title>
-<meta name="description" content="FC本部のバックオフィスを、AIで少しずつラクにする。" />
+<meta name="description" content="その副業の判断、感覚で決めてませんか？ 市場の歪みを数字で読み解き、AIで副業の判断を助ける道具をつくっています。" />
 <!-- OGP (Open Graph) -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="ひさし | AI活用研究家 ポートフォリオ" />
-<meta property="og:description" content="店舗が増えるほど、社長の時間が削られる構造を、AIで変える。FC本部のバックオフィスを、AIで少しずつラクにする。" />
+<meta property="og:description" content="その副業の判断、感覚で決めてませんか？ AIで副業の判断を、数字で助ける道具をつくっています。" />
 <meta property="og:image" content="og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -18,13 +18,12 @@
 <meta name="twitter:site" content="@biz_kaizen" />
 <meta name="twitter:creator" content="@biz_kaizen" />
 <meta name="twitter:title" content="ひさし | AI活用研究家 ポートフォリオ" />
-<meta name="twitter:description" content="店舗が増えるほど、社長の時間が削られる構造を、AIで変える。" />
+<meta name="twitter:description" content="感覚で『これ仕入れよう』。その判断、ほんとうに+EVですか？" />
 <meta name="twitter:image" content="og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   :root {
     --bg: #faf6f1;
@@ -56,10 +55,7 @@
   .ring-accent { box-shadow: 0 0 0 2px var(--accent); }
   .fade-in { animation: fade 0.45s ease both; }
   @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-  .chat-bubble { animation: pop 0.35s ease both; }
-  @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
   .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
-  /* 日本語のフレーズ単位改行: span をinline-blockにして、フレーズの途中で改行されないようにする */
   .jp p, .jp h1, .jp h2 { word-break: normal; overflow-wrap: normal; }
   .ph { display: inline; }
   @media (min-width: 768px) { .ph { display: inline-block; } }
@@ -68,6 +64,9 @@
   input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); margin-top: -6px; cursor: pointer; }
   input[type=range]::-moz-range-track { height: 4px; background: var(--line); border-radius: 9999px; }
   input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 0; cursor: pointer; }
+  .verdict-buy { color: var(--ok); }
+  .verdict-mid { color: var(--warn); }
+  .verdict-no { color: var(--danger); }
 </style>
 </head>
 <body class="leading-relaxed">
@@ -80,16 +79,16 @@
       <span>ひさし｜AI活用研究家 / @biz_kaizen</span>
     </div>
     <h1 class="text-3xl md:text-5xl font-bold leading-snug md:leading-tight mb-6">
-      店舗が増えるほど、<br />
-      社長の時間は、削られていく。<br />
-      <span class="accent">その構造をAIで、ちょっとずつ変えてます。</span>
+      その副業の判断、<br />
+      感覚で決めてませんか？<br />
+      <span class="accent">市場の歪みを、数字で読み解いてます。</span>
     </h1>
     <p class="text-base md:text-lg ink-soft max-w-2xl mb-10 jp">
-      <span class="ph">月次集計とか、</span><span class="ph">加盟店からのレポート集めとか、</span><span class="ph">ロイヤリティの計算とか。</span>
-      <span class="ph">FC本部の細かい作業を、</span><span class="ph">AIにちょっとずつ任せて、</span><span class="ph">社長の時間を取り戻すお手伝いをしています。</span>
+      <span class="ph">「儲かるらしい」で飛びついて、</span><span class="ph">コストを引いたら割に合わなかった。</span><span class="ph">副業では、</span><span class="ph">よくある話です。</span>
+      <span class="ph">それ、本当に+EV（プラス期待値）？を</span><span class="ph">数字で判断する道具を、</span><span class="ph">AIと一緒につくっています。</span><span class="ph">最初の題材は、</span><span class="ph">物販（せどり）です。</span>
     </p>
     <div class="flex flex-wrap gap-3">
-      <a href="#works" class="px-5 py-3 rounded-full bg-accent text-white text-sm md:text-base hover:opacity-90 transition">作品を見る</a>
+      <a href="#works" class="px-5 py-3 rounded-full bg-accent text-white text-sm md:text-base hover:opacity-90 transition">道具を触ってみる</a>
       <a href="https://x.com/biz_kaizen" target="_blank" rel="noopener" class="px-5 py-3 rounded-full border border-line ink hover:bg-soft transition text-sm md:text-base">Xで相談する →</a>
     </div>
   </div>
@@ -101,12 +100,12 @@
     <p class="text-xs tracking-widest ink-soft mb-3">こんな人です</p>
     <h2 class="text-2xl md:text-3xl font-bold mb-6">はじめまして、ひさしです。</h2>
     <p class="ink-soft mb-4 jp">
-      <span class="ph">会社員として働きながら、</span><span class="ph">AIで業務を自動化するのが趣味になりました。</span>
-      <span class="ph">面倒な作業をAIに任せてみたら、</span><span class="ph">思いのほかラクになって、</span><span class="ph">気づいたら業務改善が好きになっていた、</span><span class="ph">というタイプです。</span>
+      <span class="ph">会社員をしながら、</span><span class="ph">「感覚で決めず、数字で判断する」</span><span class="ph">のが好きな研究家です。</span>
+      <span class="ph">副業まわりの判断を、</span><span class="ph">市場のちょっとした歪みから読み解いて、</span><span class="ph">本当に得なのかを数字で見極めるのが</span><span class="ph">趣味になりました。</span>
     </p>
     <p class="ink-soft jp">
-      <span class="ph">ここに並ぶ作品はぜんぶ、</span><span class="ph">「FC本部の社長の時間を取り戻す」</span><span class="ph">というところから逆算して作っています。</span>
-      <span class="ph">作って終わり、ではなく、</span><span class="ph">現場でちゃんと使われ続けるところまで考えるのが、</span><span class="ph">わたしの好きなやり方です。</span>
+      <span class="ph">きっかけは、知り合いから</span><span class="ph">「副業の判断がめんどう」</span><span class="ph">と相談されたこと。</span>
+      <span class="ph">面倒なデータ集めはAIに任せて、</span><span class="ph">勝負どころの「で、やる？」は</span><span class="ph">数字で淡々と決める。</span><span class="ph">そんな道具を、</span><span class="ph">まずは物販（せどり）から</span><span class="ph">つくっています。</span>
     </p>
   </div>
 </section>
@@ -114,25 +113,25 @@
 <!-- PROBLEM -->
 <section class="px-6 md:px-10 py-20">
   <div class="max-w-5xl mx-auto">
-    <p class="text-xs tracking-widest ink-soft mb-3">こんな課題、ありませんか</p>
-    <h2 class="text-2xl md:text-3xl font-bold mb-10">FC本部にありがちな、3つの時間泥棒</h2>
+    <p class="text-xs tracking-widest ink-soft mb-3">こんな失敗、ありませんか</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-10">副業の判断で、よくある3つの落とし穴</h2>
     <div class="grid md:grid-cols-3 gap-5">
       <div class="p-6 rounded-2xl bg-soft border border-line">
-        <p class="text-lg font-bold mb-2">月次集計</p>
-        <p class="text-sm ink-soft jp"><span class="ph">加盟店ごとの売上を集めて、</span><span class="ph">月初に深夜まで突き合わせる。</span><span class="ph">気づいたら今月もこの作業。</span></p>
+        <p class="text-lg font-bold mb-2">「儲かるらしい」で飛びつく</p>
+        <p class="text-sm ink-soft jp"><span class="ph">よさそうに見えて始めたけど、</span><span class="ph">手数料・送料・時間を引いたら、</span><span class="ph">手元にほとんど残らない。</span></p>
       </div>
       <div class="p-6 rounded-2xl bg-soft border border-line">
-        <p class="text-lg font-bold mb-2">加盟店レポート</p>
-        <p class="text-sm ink-soft jp"><span class="ph">店舗の状況がリアルタイムで見えない。</span><span class="ph">相談が来てから</span><span class="ph">「あ、そうだったんだ」と気づく。</span></p>
+        <p class="text-lg font-bold mb-2">出口と確率を見ていない</p>
+        <p class="text-sm ink-soft jp"><span class="ph">入りの数字だけ見て、</span><span class="ph">「ちゃんと売れる/回収できる確率と時間」を</span><span class="ph">見ていない。資金が寝る。</span></p>
       </div>
       <div class="p-6 rounded-2xl bg-soft border border-line">
-        <p class="text-lg font-bold mb-2">ロイヤリティ計算</p>
-        <p class="text-sm ink-soft jp"><span class="ph">毎月の計算と通知。</span><span class="ph">社長自身がやってる本部も、</span><span class="ph">まだまだ多いはずです。</span></p>
+        <p class="text-lg font-bold mb-2">比べられていない</p>
+        <p class="text-sm ink-soft jp"><span class="ph">どの副業・どの案件に</span><span class="ph">お金と時間を割くのが一番得か、</span><span class="ph">並べて比べられていない。</span></p>
       </div>
     </div>
     <p class="text-lg md:text-xl mt-10 ink font-bold jp">
-      <span class="ph">店舗が増えるほど、</span><span class="ph">社長の時間が削られていく。</span><br />
-      <span class="ph">この構造、</span><span class="ph">AIで変えられます。</span>
+      <span class="ph">よさそうに見えること</span><span class="ph">＝ 得なこと、</span><span class="ph">ではありません。</span><br />
+      <span class="ph">そこを、</span><span class="ph">数字で見分けます。</span>
     </p>
   </div>
 </section>
@@ -140,176 +139,160 @@
 <!-- WORKS -->
 <section id="works" class="px-6 md:px-10 py-20 bg-soft border-y border-line">
   <div class="max-w-5xl mx-auto">
-    <p class="text-xs tracking-widest ink-soft mb-3">作ったもの</p>
+    <p class="text-xs tracking-widest ink-soft mb-3">つくっているもの</p>
     <h2 class="text-2xl md:text-3xl font-bold mb-3">作品</h2>
-    <p class="ink-soft mb-12 jp"><span class="ph">どんな課題を、</span><span class="ph">どう解いて、</span><span class="ph">何が変わるか。</span><span class="ph">実際に動くデモも触ってみてください。</span><br/><span class="ph">※デモはダミーデータで動きます。</span></p>
+    <p class="ink-soft mb-12 jp"><span class="ph">どんな課題を、</span><span class="ph">どう解いて、</span><span class="ph">何が変わるか。</span><span class="ph">実際に動くデモも触ってみてください。</span><br/><span class="ph">※デモはダミーデータで動きます。具体的な「儲かる商品」は出しません（公開した時点でエッジが消えるので）。</span></p>
 
-    <!-- 作品01: 商圏調査 -->
-    <article class="mb-20">
-      <div class="flex items-baseline gap-3 mb-2">
-        <span class="text-sm accent font-bold">01</span>
-        <h3 class="text-xl md:text-2xl font-bold">AI商圏調査ツール</h3>
-      </div>
-      <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">出店検討や、</span><span class="ph">エリア戦略のための下調べを、</span><span class="ph">AIに任せる。</span></p>
-
-      <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="p-5 rounded-2xl bg-white border border-line">
-          <p class="text-xs tracking-widest ink-soft mb-2">こんな課題が</p>
-          <p class="text-sm jp"><span class="ph">出店検討のたびに、</span><span class="ph">担当者が手作業で</span><span class="ph">3日くらいかけて</span><span class="ph">商圏調査をしている。</span></p>
-        </div>
-        <div class="p-5 rounded-2xl bg-white border border-line">
-          <p class="text-xs tracking-widest ink-soft mb-2">こう解きました</p>
-          <p class="text-sm jp"><span class="ph">エリアを選ぶだけで、</span><span class="ph">AIが競合・人口・学校数・年齢層を</span><span class="ph">ぱぱっと集計。</span><span class="ph">担当者は</span><span class="ph">「で、どうする?」</span><span class="ph">の判断に集中できます。</span></p>
-        </div>
-      </div>
-
-      <!-- DEMO -->
-      <div class="p-5 md:p-7 rounded-2xl bg-white border border-line">
-        <div class="flex items-center justify-between mb-5">
-          <p class="text-xs tracking-widest ink-soft">触れるデモ</p>
-          <span class="text-[10px] ink-soft border border-line rounded-full px-2 py-0.5">ダミーデータ</span>
-        </div>
-        <div class="flex flex-wrap gap-2 mb-5" id="area-buttons">
-          <button data-area="tokyo" class="area-btn px-4 py-2 text-sm rounded-full border border-line hover:bg-soft">東京都・世田谷区</button>
-          <button data-area="yokohama" class="area-btn px-4 py-2 text-sm rounded-full border border-line hover:bg-soft">横浜市・港北区</button>
-          <button data-area="osaka" class="area-btn px-4 py-2 text-sm rounded-full border border-line hover:bg-soft">大阪市・北区</button>
-          <button data-area="fukuoka" class="area-btn px-4 py-2 text-sm rounded-full border border-line hover:bg-soft">福岡市・早良区</button>
-        </div>
-        <div id="area-result" class="text-sm ink-soft">エリアを選ぶと、AIが集めた商圏データが出てきます。</div>
-      </div>
-
-      <p class="mt-6 text-sm ink-soft jp"><span class="accent font-bold">こうなりました　</span><span class="ph">3日 → 数時間。</span><span class="ph">担当者はAIが集めた数字を見て、</span><span class="ph">判断する時間に変わります。</span></p>
-    </article>
-
-    <!-- 作品02: 朝7時KPI配信 -->
-    <article class="mb-20">
-      <div class="flex items-baseline gap-3 mb-2">
-        <span class="text-sm accent font-bold">02</span>
-        <h3 class="text-xl md:text-2xl font-bold">朝7時KPI自動配信</h3>
-      </div>
-      <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">前日の数字を、</span><span class="ph">社長が毎朝かならず</span><span class="ph">目にする仕組みにする。</span></p>
-
-      <div class="grid md:grid-cols-2 gap-6 mb-8">
-        <div class="p-5 rounded-2xl bg-white border border-line">
-          <p class="text-xs tracking-widest ink-soft mb-2">こんな課題が</p>
-          <p class="text-sm jp"><span class="ph">前日の売上や体験申込が、</span><span class="ph">社長の手元に届いてない。</span><span class="ph">ダッシュボード作っても、</span><span class="ph">結局見に行かない。</span></p>
-        </div>
-        <div class="p-5 rounded-2xl bg-white border border-line">
-          <p class="text-xs tracking-widest ink-soft mb-2">こう解きました</p>
-          <p class="text-sm jp"><span class="ph">毎朝7時、</span><span class="ph">SlackやLINEに前日数字を自動で投稿。</span><span class="ph">「見に行く」じゃなくて</span><span class="ph">「届く」にすると、</span><span class="ph">習慣になります。</span></p>
-        </div>
-      </div>
-
-      <!-- DEMO -->
-      <div class="p-5 md:p-7 rounded-2xl bg-white border border-line">
-        <div class="flex items-center justify-between mb-5">
-          <p class="text-xs tracking-widest ink-soft">触れるデモ</p>
-          <button id="kpi-replay" class="text-xs px-3 py-1 rounded-full bg-accent text-white hover:opacity-90">▶ 再生する</button>
-        </div>
-        <div class="max-w-sm mx-auto rounded-3xl border border-line bg-soft p-4">
-          <div class="flex items-center gap-2 mb-3 pb-3 border-b border-line">
-            <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white text-xs">朝</div>
-            <div>
-              <p class="text-sm">本部KPI BOT</p>
-              <p class="text-[10px] ink-soft">朝 7:00</p>
-            </div>
-          </div>
-          <div id="kpi-chat" class="space-y-3 min-h-[260px]"></div>
-        </div>
-      </div>
-
-      <p class="mt-6 text-sm ink-soft jp"><span class="accent font-bold">こうなりました　</span><span class="ph">数字を見るのが日課になる。</span><span class="ph">退会兆候や売上の異変に、</span><span class="ph">ちょっと早く気づけます。</span></p>
-    </article>
-
-    <!-- 作品03: 退会予測 -->
+    <!-- 作品01: +EV仕入れ判定エンジン -->
     <article>
       <div class="flex items-baseline gap-3 mb-2">
-        <span class="text-sm accent font-bold">03</span>
-        <h3 class="text-xl md:text-2xl font-bold">退会予測ダッシュボード</h3>
+        <span class="text-sm accent font-bold">01</span>
+        <h3 class="text-xl md:text-2xl font-bold">+EV判定エンジン</h3>
+        <span class="text-[10px] bg-accent text-white rounded-full px-2 py-0.5">最初の題材：物販（せどり）</span>
       </div>
-      <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">「最近来てないな」を、</span><span class="ph">もっと早く気づけるように。</span></p>
+      <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">「価格差」ではなく、</span><span class="ph">コスト・確率・資金回転まで織り込んだ</span><span class="ph">「本当に+EVか」で判定する。</span><span class="ph">中身はジャンル不問。</span><span class="ph">まずは検証の速い物販で形にしています。</span></p>
 
       <div class="grid md:grid-cols-2 gap-6 mb-8">
         <div class="p-5 rounded-2xl bg-white border border-line">
           <p class="text-xs tracking-widest ink-soft mb-2">こんな課題が</p>
-          <p class="text-sm jp"><span class="ph">「最近来てないな」</span><span class="ph">と気づいたときには、</span><span class="ph">もう退会の意思が固まっている。</span><span class="ph">手の打ちようがない。</span></p>
+          <p class="text-sm jp"><span class="ph">仕入れ候補が並んでも、</span><span class="ph">どれに資金を使うのが一番得か、</span><span class="ph">結局は勘で決めている。</span><span class="ph">赤字や売れ残りも避けたい。</span></p>
         </div>
         <div class="p-5 rounded-2xl bg-white border border-line">
           <p class="text-xs tracking-widest ink-soft mb-2">こう解きました</p>
-          <p class="text-sm jp"><span class="ph">出席率・連絡頻度・月謝遅延から、</span><span class="ph">退会リスクをスコアに。</span><span class="ph">閾値を超えた生徒だけ</span><span class="ph">一覧で見えるようにします。</span></p>
+          <p class="text-sm jp"><span class="ph">全コストと需要・資金回転を一気に計算して、</span><span class="ph">「仕入れる / 条件付き / 見送り」を判定。</span><span class="ph">候補を期待利益の順に並べ、</span><span class="ph">どれから手をつけるかまで出します。</span></p>
         </div>
       </div>
 
-      <!-- DEMO -->
-      <div class="p-5 md:p-7 rounded-2xl bg-white border border-line">
+      <!-- DEMO: 単体判定 -->
+      <div class="p-5 md:p-7 rounded-2xl bg-white border border-line mb-6">
         <div class="flex items-center justify-between mb-5">
-          <p class="text-xs tracking-widest ink-soft">触れるデモ</p>
+          <p class="text-xs tracking-widest ink-soft">触れるデモ ①：手元の1品を判定</p>
           <span class="text-[10px] ink-soft border border-line rounded-full px-2 py-0.5">ダミーデータ</span>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <p class="text-xs ink-soft mb-2">出席率の推移(過去12週)</p>
-            <div class="h-48"><canvas id="retention-chart"></canvas></div>
-          </div>
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <p class="text-xs ink-soft">退会リスク閾値</p>
-              <p class="text-xs"><span id="threshold-val">50</span> 以上を表示</p>
+          <!-- 入力 -->
+          <div class="space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-1"><span class="text-xs ink-soft">仕入れ値</span><span class="text-sm"><span id="v-cost">10,000</span> 円</span></div>
+              <input id="i-cost" type="range" min="1000" max="40000" step="500" value="10000" class="w-full" />
             </div>
-            <input id="threshold" type="range" min="0" max="100" value="50" class="w-full mb-4" />
-            <div id="risk-list" class="space-y-2 text-sm"></div>
+            <div>
+              <div class="flex items-center justify-between mb-1"><span class="text-xs ink-soft">想定売値</span><span class="text-sm"><span id="v-sell">14,000</span> 円</span></div>
+              <input id="i-sell" type="range" min="1000" max="60000" step="500" value="14000" class="w-full" />
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1"><span class="text-xs ink-soft">販売手数料</span><span class="text-sm"><span id="v-fee">10</span> %</span></div>
+              <input id="i-fee" type="range" min="0" max="20" step="1" value="10" class="w-full" />
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1"><span class="text-xs ink-soft">送料・梱包</span><span class="text-sm"><span id="v-ship">800</span> 円</span></div>
+              <input id="i-ship" type="range" min="0" max="3000" step="50" value="800" class="w-full" />
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1"><span class="text-xs ink-soft">売れる確率（90日内）</span><span class="text-sm"><span id="v-prob">55</span> %</span></div>
+              <input id="i-prob" type="range" min="10" max="100" step="5" value="55" class="w-full" />
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1"><span class="text-xs ink-soft">想定の資金回転</span><span class="text-sm"><span id="v-days">35</span> 日</span></div>
+              <input id="i-days" type="range" min="7" max="120" step="1" value="35" class="w-full" />
+            </div>
           </div>
+          <!-- 結果 -->
+          <div id="single-result" class="flex flex-col"></div>
         </div>
       </div>
 
-      <p class="mt-6 text-sm ink-soft jp"><span class="accent font-bold">こうなりました　</span><span class="ph">退会の予兆に1〜2週間早く気づける。</span><span class="ph">本部と教室で、</span><span class="ph">先に声をかけられます。</span></p>
+      <!-- DEMO: ランキング -->
+      <div class="p-5 md:p-7 rounded-2xl bg-white border border-line">
+        <div class="flex items-center justify-between mb-1">
+          <p class="text-xs tracking-widest ink-soft">触れるデモ ②：候補に優先順位をつける</p>
+          <span class="text-[10px] ink-soft border border-line rounded-full px-2 py-0.5">ダミーデータ</span>
+        </div>
+        <p class="text-xs ink-soft mb-5 jp"><span class="ph">同じエンジンに6つの候補を通すと、</span><span class="ph">期待利益の高い順に並びます。</span><span class="ph">行をタップすると、</span><span class="ph">なぜその判定かが出ます。</span></p>
+        <div id="rank-list" class="space-y-2"></div>
+        <div id="rank-detail" class="mt-4"></div>
+      </div>
+
+      <p class="mt-6 text-sm ink-soft jp"><span class="accent font-bold">こうなりました　</span><span class="ph">「価格差はあるのに見送るべき仕入れ」が、</span><span class="ph">数字でハッキリ分かる。</span><span class="ph">限られた資金を、</span><span class="ph">一番+EVな候補に回せます。</span></p>
     </article>
   </div>
 </section>
 
-<!-- OTHER WORKS -->
+<!-- EXPAND TO OTHER SIDE HUSTLES -->
 <section class="px-6 md:px-10 py-20">
   <div class="max-w-5xl mx-auto">
-    <p class="text-xs tracking-widest ink-soft mb-3">他にもこういうの作れます</p>
-    <h2 class="text-2xl md:text-3xl font-bold mb-10">こんなのも、ぜんぶAIで</h2>
+    <p class="text-xs tracking-widest ink-soft mb-3">物販だけじゃない</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">同じ「数字で判断」を、いろんな副業に</h2>
+    <p class="ink-soft mb-10 max-w-2xl jp"><span class="ph">エンジンの中身は、</span><span class="ph">「全コスト・確率・回収する時間まで織り込んで、</span><span class="ph">本当に+EVかを見分ける」という考え方。</span><span class="ph">これは物販に限らず、</span><span class="ph">いろんな副業の判断にそのまま効きます。</span></p>
     <div class="grid md:grid-cols-2 gap-5">
-      <div class="p-6 rounded-2xl bg-soft border border-line">
-        <p class="text-lg font-bold mb-2">保護者対応AIアシスタント</p>
-        <p class="text-sm ink-soft jp"><span class="ph">過去のやりとりを学習して、</span><span class="ph">返信3案をAIが用意。</span><span class="ph">代表は「これでOK」を押すだけ。</span></p>
+      <div class="p-6 rounded-2xl bg-soft border border-line ring-accent">
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-lg font-bold">物販・せどり</p>
+          <span class="text-[10px] accent border border-line rounded-full px-2 py-0.5">いま、ここ</span>
+        </div>
+        <p class="text-sm ink-soft jp"><span class="ph">その仕入れ、</span><span class="ph">手数料・送料・売れる確率まで見て</span><span class="ph">本当に+EV？</span><span class="ph">最初の題材として開発中。</span></p>
       </div>
       <div class="p-6 rounded-2xl bg-soft border border-line">
-        <p class="text-lg font-bold mb-2">オーナーオンボーディング自動化</p>
-        <p class="text-sm ink-soft jp"><span class="ph">開業前12週の進捗チェック、</span><span class="ph">Zoom議事録AI要約、</span><span class="ph">未完了タスクのリマインド。</span></p>
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-lg font-bold">案件・時給の見極め</p>
+          <span class="text-[10px] ink-soft border border-line rounded-full px-2 py-0.5">応用</span>
+        </div>
+        <p class="text-sm ink-soft jp"><span class="ph">その副業案件、</span><span class="ph">かかる時間で割ると</span><span class="ph">本当に割に合ってる？</span><span class="ph">時間あたりの期待リターンで比べる。</span></p>
       </div>
       <div class="p-6 rounded-2xl bg-soft border border-line">
-        <p class="text-lg font-bold mb-2">SEO内製化監査テンプレート</p>
-        <p class="text-sm ink-soft jp"><span class="ph">内部リンク、記事の鮮度、</span><span class="ph">エリアページ、監修者情報を、</span><span class="ph">AIが自動で点検。</span></p>
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-lg font-bold">ポイ活・キャンペーン</p>
+          <span class="text-[10px] ink-soft border border-line rounded-full px-2 py-0.5">応用</span>
+        </div>
+        <p class="text-sm ink-soft jp"><span class="ph">手間と条件を天秤にかけて、</span><span class="ph">「やる価値がある案件」だけを</span><span class="ph">数字で拾う。</span></p>
       </div>
       <div class="p-6 rounded-2xl bg-soft border border-line">
-        <p class="text-lg font-bold mb-2">FC加盟提案書 自動ドラフト</p>
-        <p class="text-sm ink-soft jp"><span class="ph">検討者の属性から、</span><span class="ph">投資回収シミュレーション付きの提案書を、</span><span class="ph">AIが下書きします。</span></p>
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-lg font-bold">投資・不動産の判定</p>
+          <span class="text-[10px] ink-soft border border-line rounded-full px-2 py-0.5">これから</span>
+        </div>
+        <p class="text-sm ink-soft jp"><span class="ph">同じEVの考え方を、</span><span class="ph">より大きな・長く付き合う判断へ。</span><span class="ph">物販で鍛えたエンジンを昇格させていく。</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRINCIPLES -->
+<!-- WHY DIFFERENT -->
 <section class="px-6 md:px-10 py-20 bg-soft border-y border-line">
+  <div class="max-w-3xl mx-auto">
+    <p class="text-xs tracking-widest ink-soft mb-3">既存ツールとの違い</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-8">「価格差を出す」で終わらせない</h2>
+    <div class="space-y-4">
+      <div class="p-5 rounded-2xl bg-soft border border-line">
+        <p class="font-bold mb-1">既存の価格比較ツール</p>
+        <p class="text-sm ink-soft jp"><span class="ph">「この商品、A店とB店で◯円差があります」</span><span class="ph">——表示はそこまで。</span><span class="ph">手数料・送料・売れやすさ・資金回転は、</span><span class="ph">自分で頭の中で計算するしかない。</span></p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white border border-line ring-accent">
+        <p class="font-bold mb-1 accent">+EV判定エンジン</p>
+        <p class="text-sm ink-soft jp"><span class="ph">全コストと需要確率・資金回転まで織り込んで、</span><span class="ph">「本当に+EVか」を判定し、</span><span class="ph">候補に優先順位をつける。</span><span class="ph">勝負どころは検索ではなく、</span><span class="ph">判断の精度です。</span></p>
+      </div>
+    </div>
+    <p class="text-sm ink-soft mt-6 jp"><span class="ph">※「儲かる商品そのもの（ピック）」は提供しません。</span><span class="ph">それは公開した瞬間に価値が消えるから。</span><span class="ph">お渡しするのは、</span><span class="ph">自分の対象を自分で判定できる「道具」です。</span></p>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="px-6 md:px-10 py-20">
   <div class="max-w-3xl mx-auto">
     <p class="text-xs tracking-widest ink-soft mb-3">考え方</p>
     <h2 class="text-2xl md:text-3xl font-bold mb-10">大事にしてること</h2>
     <ol class="space-y-6">
       <li>
-        <p class="text-lg font-bold mb-1">作って終わり、にしない。</p>
-        <p class="text-sm ink-soft jp"><span class="ph">道具は、</span><span class="ph">使われ続けてはじめて意味がある。</span><span class="ph">導入したあとの運用や習慣化まで、</span><span class="ph">ちゃんと考えます。</span></p>
+        <p class="text-lg font-bold mb-1">感覚で決めず、数字で判断する。</p>
+        <p class="text-sm ink-soft jp"><span class="ph">「なんとなく良さそう」を、</span><span class="ph">期待値という数字に翻訳する。</span><span class="ph">得か損かは、</span><span class="ph">気分ではなく計算で決めます。</span></p>
       </li>
       <li>
-        <p class="text-lg font-bold mb-1">「社長の時間が戻るか?」だけを物差しにする。</p>
-        <p class="text-sm ink-soft jp"><span class="ph">何を作るか、どう作るか、</span><span class="ph">迷ったときの判断基準はひとつだけ。</span><span class="ph">「本部の社長の時間が、</span><span class="ph">ちょっとでも戻ったか?」</span><span class="ph">それだけを見ます。</span></p>
+        <p class="text-lg font-bold mb-1">赤字になる候補を、先に弾く。</p>
+        <p class="text-sm ink-soft jp"><span class="ph">「やってみたら損だった」を、</span><span class="ph">始める前に数字で止める。</span><span class="ph">攻めるより先に、</span><span class="ph">負けを減らすことを大事にします。</span></p>
       </li>
       <li>
-        <p class="text-lg font-bold mb-1">明日試せるサイズで話す。</p>
-        <p class="text-sm ink-soft jp"><span class="ph">「生産性10倍」みたいな大きな話より、</span><span class="ph">今日見直せるくらい小さな改善を、</span><span class="ph">ひとつずつ。</span></p>
+        <p class="text-lg font-bold mb-1">むずかしい計算は、道具の中に。</p>
+        <p class="text-sm ink-soft jp"><span class="ph">数式を覚える必要はありません。</span><span class="ph">面倒な計算とデータ集めはぜんぶ任せて、</span><span class="ph">あなたは「やる/やらない」の判断に</span><span class="ph">集中できます。</span></p>
       </li>
     </ol>
   </div>
@@ -321,9 +304,9 @@
     <p class="text-xs tracking-widest ink-soft mb-3">プロフィール</p>
     <h2 class="text-2xl md:text-3xl font-bold mb-8">ひさし｜AI活用研究家</h2>
     <dl class="grid grid-cols-[6rem_1fr] md:grid-cols-[8rem_1fr] gap-y-3 text-sm md:text-base">
-      <dt class="ink-soft">仕事</dt><dd>会社員 × AIで業務自動化</dd>
+      <dt class="ink-soft">スタンス</dt><dd>会社員 × AI活用｜感覚で決めず、数字で判断する</dd>
       <dt class="ink-soft">発信</dt><dd><a class="accent underline underline-offset-4" href="https://x.com/biz_kaizen" target="_blank" rel="noopener">@biz_kaizen</a></dd>
-      <dt class="ink-soft">テーマ</dt><dd>FC本部のバックオフィスを、AIで小さくラクに</dd>
+      <dt class="ink-soft">テーマ</dt><dd>AIで、副業の判断を助ける道具を開発中</dd>
       <dt class="ink-soft">拠点</dt><dd>大阪</dd>
     </dl>
   </div>
@@ -332,8 +315,8 @@
 <!-- CTA -->
 <section class="px-6 md:px-10 py-20 bg-soft border-t border-line">
   <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-2xl md:text-3xl font-bold mb-4">「これ面倒...」のひと言から、どうぞ。</h2>
-    <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">FC本部・多店舗経営の方からの相談、</span><span class="ph">XのDMで受けつけてます。</span><br/><span class="ph">気軽な入口で全然OKです。</span></p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">「この作業、めんどう」のひと言から、どうぞ。</h2>
+    <p class="ink-soft mb-8 text-sm md:text-base jp"><span class="ph">副業の判断や面倒な作業を</span><span class="ph">ラクにする道具のご相談、</span><span class="ph">XのDMで受けつけてます。</span><br/><span class="ph">軽い入口で全然OKです。</span></p>
     <a href="https://x.com/biz_kaizen" target="_blank" rel="noopener" class="inline-block px-6 py-3 rounded-full bg-accent text-white hover:opacity-90 transition">XのDMで相談する →</a>
   </div>
 </section>
@@ -343,188 +326,136 @@
 </footer>
 
 <script>
-/* ===== 作品01: 商圏調査 ===== */
-const AREA_DATA = {
-  tokyo: {
-    name: "東京都 世田谷区",
-    competitors: 18, population: "約 92.5万人", schools: 89,
-    ages: [{label:"未就学",v:9},{label:"小学生",v:13},{label:"中高生",v:10},{label:"20-30代",v:30},{label:"40-50代",v:25},{label:"60代-",v:13}],
-    comment: "競合は多めですが、ファミリー層の絶対数が圧倒的。差別化できれば十分な需要があります。"
-  },
-  osaka: {
-    name: "大阪市 北区",
-    competitors: 12, population: "約 13.8万人", schools: 9,
-    ages: [{label:"未就学",v:8},{label:"小学生",v:14},{label:"中高生",v:11},{label:"20-30代",v:34},{label:"40-50代",v:22},{label:"60代-",v:11}],
-    comment: "競合密度はちょっと高め。子育て層が多い駅東側にまだ空きがありそう。"
-  },
-  yokohama: {
-    name: "横浜市 港北区",
-    competitors: 7, population: "約 36.0万人", schools: 26,
-    ages: [{label:"未就学",v:12},{label:"小学生",v:18},{label:"中高生",v:13},{label:"20-30代",v:24},{label:"40-50代",v:21},{label:"60代-",v:12}],
-    comment: "ファミリー層が多くて学校数も多い。出店の余地、けっこうあります。"
-  },
-  fukuoka: {
-    name: "福岡市 早良区",
-    competitors: 5, population: "約 22.0万人", schools: 18,
-    ages: [{label:"未就学",v:10},{label:"小学生",v:16},{label:"中高生",v:12},{label:"20-30代",v:28},{label:"40-50代",v:20},{label:"60代-",v:14}],
-    comment: "競合が少なめ。住宅街向けの集客やSNSと相性よさそうです。"
-  }
+/* ===== 共通：EV計算ロジック ===== */
+function evCalc(cost, sell, feePct, ship, probPct, days) {
+  const fee = sell * feePct / 100;
+  const net = sell - cost - fee - ship;            // 売れたときの純利益
+  const margin = net / cost * 100;                 // 利益率(対仕入れ)
+  const p = probPct / 100;
+  const ev = net * p;                              // 期待純利益
+  const monthlyRoi = (ev / cost) / (days / 30) * 100; // 資金の月利換算
+  return { fee, net, margin, ev, monthlyRoi };
+}
+function judge(r) {
+  if (r.ev <= 0 || r.net <= 0) return { key: "no",  label: "見送り",  cls: "verdict-no",  color: "var(--danger)" };
+  if (r.monthlyRoi >= 15 && r.net >= 1500) return { key: "buy", label: "仕入れる", cls: "verdict-buy", color: "var(--ok)" };
+  if (r.monthlyRoi >= 6) return { key: "mid", label: "条件付き", cls: "verdict-mid", color: "var(--warn)" };
+  return { key: "no", label: "見送り", cls: "verdict-no", color: "var(--danger)" };
+}
+const yen = n => Math.round(n).toLocaleString("ja-JP");
+
+/* ===== デモ①：単体判定 ===== */
+const ids = ["cost","sell","fee","ship","prob","days"];
+function readSingle() {
+  const g = id => +document.getElementById("i-"+id).value;
+  return { cost:g("cost"), sell:g("sell"), fee:g("fee"), ship:g("ship"), prob:g("prob"), days:g("days") };
+}
+function renderSingle() {
+  const s = readSingle();
+  document.getElementById("v-cost").textContent = yen(s.cost);
+  document.getElementById("v-sell").textContent = yen(s.sell);
+  document.getElementById("v-fee").textContent  = s.fee;
+  document.getElementById("v-ship").textContent = yen(s.ship);
+  document.getElementById("v-prob").textContent = s.prob;
+  document.getElementById("v-days").textContent = s.days;
+
+  const r = evCalc(s.cost, s.sell, s.fee, s.ship, s.prob, s.days);
+  const v = judge(r);
+  const box = document.getElementById("single-result");
+  box.innerHTML = `
+    <div class="fade-in flex flex-col h-full">
+      <div class="rounded-2xl border border-line p-5 text-center mb-4" style="background:var(--bg)">
+        <p class="text-[11px] tracking-widest ink-soft mb-1">判定</p>
+        <p class="text-3xl font-bold ${v.cls}">${v.label}</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-center">
+        <div class="p-3 rounded-xl bg-soft border border-line">
+          <p class="text-[10px] ink-soft mb-1">純利益（売れたら）</p>
+          <p class="text-base font-bold ink">${yen(r.net)}<span class="text-xs ink-soft font-normal">円</span></p>
+        </div>
+        <div class="p-3 rounded-xl bg-soft border border-line">
+          <p class="text-[10px] ink-soft mb-1">利益率</p>
+          <p class="text-base font-bold ink">${r.margin.toFixed(0)}<span class="text-xs ink-soft font-normal">%</span></p>
+        </div>
+        <div class="p-3 rounded-xl bg-soft border border-line">
+          <p class="text-[10px] ink-soft mb-1">期待利益（確率込み）</p>
+          <p class="text-base font-bold" style="color:${v.color}">${yen(r.ev)}<span class="text-xs ink-soft font-normal">円</span></p>
+        </div>
+        <div class="p-3 rounded-xl bg-soft border border-line">
+          <p class="text-[10px] ink-soft mb-1">資金の月利換算</p>
+          <p class="text-base font-bold" style="color:${v.color}">${r.monthlyRoi.toFixed(1)}<span class="text-xs ink-soft font-normal">%</span></p>
+        </div>
+      </div>
+      <p class="text-[11px] ink-soft mt-3 jp">${hint(r, v)}</p>
+    </div>`;
+}
+function hint(r, v) {
+  if (v.key === "buy") return "コスト・需要・回転のどれを見ても十分。資金を回す価値あり。";
+  if (v.key === "mid") return "利益は出るが、回転か確率に弱さあり。仕入れ値を抑えるか、回転を上げたい。";
+  if (r.net <= 0) return "手数料と送料を引くと、売れても赤字。数字上は触ってはいけない候補。";
+  return "売れたときの利益はあるが、売れる確率か資金回転が悪く、期待値・月利が見合わない。";
+}
+ids.forEach(id => document.getElementById("i-"+id).addEventListener("input", renderSingle));
+
+/* ===== デモ②：ランキング ===== */
+const CANDS = [
+  { name:"限定トレカ",       cost:4200,  sell:7800,  fee:10, ship:250,  prob:72, days:21 },
+  { name:"中古ゲーム機",     cost:8800,  sell:13200, fee:10, ship:700,  prob:66, days:28 },
+  { name:"人気スニーカー",   cost:13500, sell:18200, fee:10, ship:800,  prob:58, days:35 },
+  { name:"ブランド小物",     cost:18000, sell:24000, fee:12, ship:900,  prob:40, days:75 },
+  { name:"型落ち家電",       cost:22000, sell:26500, fee:15, ship:1200, prob:65, days:28 },
+  { name:"在庫処分の雑貨",   cost:3000,  sell:3600,  fee:10, ship:350,  prob:80, days:30 },
+];
+const NOTES = {
+  "限定トレカ":"需要が厚く資金回転も速い。文句なしの+EV。",
+  "中古ゲーム機":"利益率・回転ともに良好。資金を回す価値あり。",
+  "人気スニーカー":"利益は出るが回転がやや遅い。仕入れ値を抑えられれば仕入れたい。",
+  "ブランド小物":"純利益は一番大きいが、資金が約2.5か月寝る。月利で見ると弱く、優先度は下げるべき。",
+  "型落ち家電":"手数料15%が重く、売れても利益がほぼ消える。価格差の罠。",
+  "在庫処分の雑貨":"送料と手数料で赤字。価格差はあっても触ってはいけない。"
 };
-
-document.querySelectorAll(".area-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".area-btn").forEach(b => b.classList.remove("ring-accent","bg-soft"));
-    btn.classList.add("ring-accent","bg-soft");
-    renderArea(btn.dataset.area);
+function renderRank() {
+  const rows = CANDS.map(c => {
+    const r = evCalc(c.cost, c.sell, c.fee, c.ship, c.prob, c.days);
+    return { ...c, ...r, v: judge(r) };
+  }).sort((a,b) => b.ev - a.ev);
+  const list = document.getElementById("rank-list");
+  list.innerHTML = rows.map((r,i) => `
+    <button data-name="${r.name}" class="rank-row w-full text-left p-3 rounded-xl bg-soft border border-line hover:bg-white transition">
+      <div class="flex items-center gap-3">
+        <span class="text-sm ink-soft w-5 text-center shrink-0">${i+1}</span>
+        <span class="text-sm ink flex-1">${r.name}</span>
+        <span class="text-xs ink-soft hidden sm:inline">期待利益 ${yen(r.ev)}円</span>
+        <span class="text-xs ink-soft hidden sm:inline">月利 ${r.monthlyRoi.toFixed(0)}%</span>
+        <span class="text-xs font-bold ${r.v.cls} w-16 text-right shrink-0">${r.v.label}</span>
+      </div>
+    </button>`).join("");
+  document.querySelectorAll(".rank-row").forEach(btn => {
+    btn.addEventListener("click", () => showRankDetail(btn.dataset.name, rows));
   });
-});
-
-function renderArea(key) {
-  const d = AREA_DATA[key];
-  const max = Math.max(...d.ages.map(a => a.v));
-  const result = document.getElementById("area-result");
-  result.innerHTML = `
-    <div class="fade-in">
-      <p class="text-sm ink mb-4"><span class="accent font-bold">${d.name}</span> の商圏データ</p>
-      <div class="grid grid-cols-3 gap-3 mb-5">
-        <div class="p-3 rounded-xl bg-soft border border-line text-center">
-          <p class="text-[10px] ink-soft mb-1">競合</p>
-          <p class="text-lg font-bold ink">${d.competitors}<span class="text-xs ink-soft font-normal">店</span></p>
-        </div>
-        <div class="p-3 rounded-xl bg-soft border border-line text-center">
-          <p class="text-[10px] ink-soft mb-1">人口</p>
-          <p class="text-lg font-bold ink">${d.population}</p>
-        </div>
-        <div class="p-3 rounded-xl bg-soft border border-line text-center">
-          <p class="text-[10px] ink-soft mb-1">学校数</p>
-          <p class="text-lg font-bold ink">${d.schools}<span class="text-xs ink-soft font-normal">校</span></p>
-        </div>
+}
+function showRankDetail(name, rows) {
+  const r = rows.find(x => x.name === name);
+  document.querySelectorAll(".rank-row").forEach(b => b.classList.toggle("ring-accent", b.dataset.name === name));
+  document.getElementById("rank-detail").innerHTML = `
+    <div class="fade-in p-4 rounded-xl bg-white border border-line">
+      <div class="flex items-center justify-between mb-3">
+        <p class="font-bold ink">${r.name}</p>
+        <span class="text-sm font-bold ${r.v.cls}">${r.v.label}</span>
       </div>
-      <p class="text-[10px] ink-soft mb-2">年齢層の構成比</p>
-      <div class="space-y-1.5 mb-5">
-        ${d.ages.map(a => `
-          <div class="flex items-center gap-2">
-            <span class="text-[10px] ink-soft w-14 shrink-0">${a.label}</span>
-            <div class="flex-1 h-3 rounded-full bg-soft overflow-hidden">
-              <div class="h-full bg-accent rounded-full" style="width:${Math.round(a.v / max * 100)}%"></div>
-            </div>
-            <span class="text-[10px] ink-soft w-8 text-right">${a.v}%</span>
-          </div>`).join("")}
+      <div class="grid grid-cols-4 gap-2 text-center mb-3">
+        <div><p class="text-[10px] ink-soft">純利益</p><p class="text-sm font-bold ink">${yen(r.net)}</p></div>
+        <div><p class="text-[10px] ink-soft">利益率</p><p class="text-sm font-bold ink">${r.margin.toFixed(0)}%</p></div>
+        <div><p class="text-[10px] ink-soft">期待利益</p><p class="text-sm font-bold" style="color:${r.v.color}">${yen(r.ev)}</p></div>
+        <div><p class="text-[10px] ink-soft">月利</p><p class="text-sm font-bold" style="color:${r.v.color}">${r.monthlyRoi.toFixed(0)}%</p></div>
       </div>
-      <div class="p-3 rounded-xl bg-soft border border-line">
-        <p class="text-[10px] tracking-widest ink-soft mb-1">AIのひとこと</p>
-        <p class="text-sm ink">${d.comment}</p>
-      </div>
+      <p class="text-[11px] ink-soft jp">${NOTES[r.name]}</p>
     </div>`;
 }
 
-/* ===== 作品02: 朝7時KPI自動配信 ===== */
-const KPI_MESSAGES = [
-  { t: "おはようございます☀️ 昨日(6/6)の本部KPIをお届けします。" },
-  { t: "💰 昨日の総売上：<b>¥1,284,000</b>（前日比 +6.2%）" },
-  { t: "📝 体験申込：<b>14件</b>（過去7日平均 11件）" },
-  { t: "👥 在籍：<b>1,062名</b>／新規入会 +5・退会 -2" },
-  { t: "⚠️ 退会兆候スコアが上がった生徒が <b>3名</b>。退会予測ダッシュボードを確認してください。" },
-  { t: "今日もいってらっしゃい🙌" }
-];
-
-function renderKpiChat() {
-  const box = document.getElementById("kpi-chat");
-  if (!box) return;
-  box.innerHTML = "";
-  KPI_MESSAGES.forEach((m, i) => {
-    setTimeout(() => {
-      const el = document.createElement("div");
-      el.className = "chat-bubble bg-white border border-line rounded-2xl rounded-tl-sm px-3 py-2 text-sm ink";
-      el.innerHTML = m.t;
-      box.appendChild(el);
-      box.scrollTop = box.scrollHeight;
-    }, i * 650);
-  });
-}
-
-const kpiReplay = document.getElementById("kpi-replay");
-if (kpiReplay) kpiReplay.addEventListener("click", renderKpiChat);
-
-/* ===== 作品03: 退会予測ダッシュボード ===== */
-const STUDENTS = [
-  { name: "A.S さん", risk: 82, note: "直近4週で欠席増・月謝1回遅延" },
-  { name: "K.T さん", risk: 67, note: "連絡頻度が低下、出席率 58%" },
-  { name: "M.Y さん", risk: 54, note: "出席はするが体験以来の進級なし" },
-  { name: "R.N さん", risk: 38, note: "やや出席ムラあり" },
-  { name: "H.K さん", risk: 21, note: "安定して通えています" },
-  { name: "Y.I さん", risk: 12, note: "出席率 96%・問題なし" }
-];
-
-function riskColor(r) {
-  if (r >= 70) return "var(--danger)";
-  if (r >= 45) return "var(--warn)";
-  return "var(--ok)";
-}
-
-function renderRiskList() {
-  const list = document.getElementById("risk-list");
-  const th = +document.getElementById("threshold").value;
-  if (!list) return;
-  const hit = STUDENTS.filter(s => s.risk >= th).sort((a, b) => b.risk - a.risk);
-  if (!hit.length) {
-    list.innerHTML = `<p class="text-xs ink-soft">この閾値を超える生徒はいません。</p>`;
-    return;
-  }
-  list.innerHTML = hit.map(s => `
-    <div class="p-3 rounded-xl bg-soft border border-line">
-      <div class="flex items-center justify-between mb-1">
-        <span class="text-sm ink">${s.name}</span>
-        <span class="text-xs font-bold" style="color:${riskColor(s.risk)}">リスク ${s.risk}</span>
-      </div>
-      <div class="h-2 rounded-full bg-white overflow-hidden mb-1">
-        <div class="h-full rounded-full" style="width:${s.risk}%;background:${riskColor(s.risk)}"></div>
-      </div>
-      <p class="text-[11px] ink-soft">${s.note}</p>
-    </div>`).join("");
-}
-
-const thresholdEl = document.getElementById("threshold");
-if (thresholdEl) {
-  thresholdEl.addEventListener("input", () => {
-    document.getElementById("threshold-val").textContent = thresholdEl.value;
-    renderRiskList();
-  });
-}
-
 window.addEventListener("load", () => {
-  // 退会予測チャート
-  const canvas = document.getElementById("retention-chart");
-  if (canvas && window.Chart) {
-    const weeks = Array.from({ length: 12 }, (_, i) => `${i + 1}w`);
-    new Chart(canvas, {
-      type: "line",
-      data: {
-        labels: weeks,
-        datasets: [{
-          label: "出席率(%)",
-          data: [94, 93, 95, 92, 90, 91, 88, 85, 83, 80, 77, 74],
-          borderColor: "#c4724f",
-          backgroundColor: "rgba(196,114,79,0.12)",
-          fill: true,
-          tension: 0.35,
-          pointRadius: 2,
-          borderWidth: 2
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-          y: { min: 60, max: 100, ticks: { font: { size: 10 } }, grid: { color: "#e3d8c5" } },
-          x: { ticks: { font: { size: 10 } }, grid: { display: false } }
-        }
-      }
-    });
-  }
-  renderRiskList();
-  renderKpiChat();
+  renderSingle();
+  renderRank();
 });
 </script>
 </body>
